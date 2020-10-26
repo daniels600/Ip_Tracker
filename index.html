@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+
+    * {
+      padding: 0%;
+      margin: 0%;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+      /* background: url(./images/pattern-bg.png) no-repeat top center; */
+    }
+
+    header {
+      padding-top: 0.5em;
+      height: 25vh;
+      background-image: url('./images/pattern-bg.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+
+    }
+
+    header h1 {
+      color: whitesmoke;
+      font-size: 1.75em;
+    }
+
+    #searchBarDiv {
+      display: flex;
+      align-items: center;
+      background-color: black;
+      border-radius: 5px;
+      width: 30%;
+    }
+
+    #searchBar {
+      border-radius: 5px 0px 0px 5px;
+      border: none;
+      padding: 0.75em 1em;
+      width: 100%;
+    }
+
+    #searchBarDiv i {
+      color: white;
+      padding: 0.25em 1em;
+      font-size: 1.25em;
+      cursor: pointer;
+    }
+
+    #searchBarDiv i:hover {
+      color: rgb(66, 66, 226);
+    }
+
+    #resultSection {
+      position: absolute;
+      top: 17.5%;
+      left: 10%;
+      background-color: white;
+      width: 80%;
+      /* height: 20vh; */
+      z-index: 99999999;
+      border-radius: 10px;
+      padding: 2em 0em;
+    }
+
+    #resultSection .details {
+      text-align: left;
+      padding-left: 1em;
+      border-right: 1px solid black;
+    }
+
+    #resultSection #isp {
+      border-right: none;
+    }
+
+    #resultSection .details div:first-child {
+      font-size: 0.75em;
+      font-weight: bold;
+      color: hsl(0, 0%, 59%);
+      margin-bottom: 0.5em;
+    }
+
+    #resultSection .details div:last-child {
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1em;
+      color: hsl(0, 0%, 17%);
+      word-break: normal;
+    }
+
+    #mapid {
+      height: 70vh;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="heading">
+    <h1>IP Address Tracker</h1>
+    <div id="searchBarDiv">
+      <label for="searchBar" class="visuallyhidden"> </label>
+      <input type="text" name="searchBar" id="searchBar" placeholder="Search for any IP address or domain"
+        aria-labelledby="searchBar">
+      <i class="fa fa-angle-right searchBtn"></i>
+    </div>
+
+  </header>
+
+
+  <main id="resultSection" class="row">
+
+    <div class="col-md-3 details" id="ipAddress">
+      <div>IP ADDRESS</div>
+      <div id="ipValue"></div>
+    </div>
+    <div class="col-md-3 details" id="location">
+      <div>LOCATION</div>
+      <div id="locationValue"></div>
+    </div>
+    <div class="col-md-3 details" id="timezone">
+      <div>TIMEZONE</div>
+      <div id="timezoneValue"></div>
+    </div>
+    <div class="col-md-3 details" id="isp">
+      <div>ISP</div>
+      <div id="ispValue"></div>
+    </div>
+
+  </main>
+
+  <div id="mapSection">
+    <div id="mapid"></div>
+  </div>
+
+
+  <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a
+      href="#">Eugene Daniels</a>.
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
